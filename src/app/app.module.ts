@@ -1,20 +1,22 @@
+import { ComponentsModule } from './components/components.module';
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './pages/home/home.component';
+import { FaqComponent } from './pages/faq/faq.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    SidebarComponent,
-    FooterComponent
+    HomeComponent,
+    FaqComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
