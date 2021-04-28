@@ -20,7 +20,7 @@
       <ng-container *ngIf="showButton">
         <div class="container-drag" appDnd (fileDropped)="onFileDropped($event)">
             <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
-            <img src="assets/img/dnd/ic-upload-file.svg" alt="">
+            <img src="assets/img/dnd/icons8-upload-to-the-cloud.svg" alt="">
             <h3>Drag and drop file here</h3>
             <h3>or</h3>
             <label for="fileDropRef">Browse for file</label>
