@@ -3,6 +3,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DataTablesModule } from 'angular-datatables';
+import { ProgressComponent } from './progress/progress.component';
 
 
 
@@ -10,14 +12,17 @@ import { CommonModule } from '@angular/common';
   declarations: [
     NavbarComponent,
     SidebarComponent,
-    FooterComponent,],
+    FooterComponent,
+    ProgressComponent,],
   imports: [
-    CommonModule
+    CommonModule,
+    DataTablesModule
   ],
   exports: [
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
+    ProgressComponent
   ]
 })
 export class ComponentsModule { }

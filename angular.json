@@ -27,7 +27,8 @@
               "src/styles.css",
               "src/assets/plugins/fontawesome-free/css/all.min.css",
               "src/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
-              "src/assets/docs/assets/css/adminlte.css"
+              "src/assets/docs/assets/css/adminlte.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
             ],
             "scripts": [
               "src/assets/plugins/jquery/jquery.js",
@@ -40,7 +41,9 @@
               "src/assets/plugins/jquery-mapael/jquery.mapael.js",
               "src/assets/plugins/jquery-mapael/maps/usa_states.js",
               "src/assets/plugins/chart.js/Chart.js",
-              "src/assets/dist/js/pages/dashboard.js"
+              "src/assets/dist/js/pages/dashboard.js",
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js"
             ]
           },
           "configurations": {
@@ -101,10 +104,8 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-            ],
-            "scripts": [
-            ]
+            "styles": [],
+            "scripts": []
           }
         },
         "lint": {
