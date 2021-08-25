@@ -11,6 +11,7 @@ import { FaqComponent } from './pages/faq/faq.component';
 import { UserModule } from './pages/user/user.module';
 import { DndDirective } from './directives/dnd.directive';
 import { Error404Component } from './pages/error404/error404.component';
+import { InvoiceModule } from './pages/invoice/invoice.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { Error404Component } from './pages/error404/error404.component';
     ComponentsModule,
     UserModule,
     ContractModule,
+    InvoiceModule,
     SharedModule
   ],
   providers: [],

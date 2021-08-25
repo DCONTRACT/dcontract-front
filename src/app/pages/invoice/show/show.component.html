@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<!-- <app-footer></app-footer> -->
+<div class="content-wrapper iframe-mode" data-widget="iframe" data-loading-screen="750">
+    <!-- <ngx-imageviewer [src]="imageSrc"></ngx-imageviewer> -->
+    <div class="row">
+        <div class="col-sm-8">
+            <div [ngStyle]="{'height.px': screenHeight}">
+                <ng2-pdfjs-viewer pdfSrc="../../../../assets/img/invoice2.pdf"></ng2-pdfjs-viewer>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="content-header">
+                <div class="container-fluid">
+                  <div class="row mb-2">
+                    <h1 class="m-0">Informations Facture</h1>
+                  </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+              </div>
+              <div class="content">
+                <div class="container-fluid">
+                    <div class="center">
+                        <pre>{{invoice |json}}</pre>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

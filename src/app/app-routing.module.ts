@@ -3,13 +3,16 @@ import { FaqComponent } from "./pages/faq/faq.component";
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from "./shared/layout/layout.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "", redirectTo: "invoice", pathMatch: "full" },
   {
     path: "contract",
     loadChildren: "src/app/pages/contract/contract.module#ContractModule",
+  },
+  {
+    path: "invoice",
+    loadChildren: "src/app/pages/invoice/invoice.module#InvoiceModule"
   },
   {
     path: "auth",

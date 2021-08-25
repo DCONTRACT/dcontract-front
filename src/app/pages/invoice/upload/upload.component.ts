@@ -1,13 +1,15 @@
-import { AppService } from './../../../services/app.service';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'app-contract-list',
-  templateUrl: './contract-list.component.html',
-  styleUrls: ['./contract-list.component.css']
+  selector: 'app-upload',
+  templateUrl: './upload.component.html',
+  styleUrls: ['./upload.component.css']
 })
-export class ContractListComponent {
+export class UploadComponent implements OnInit {
+
   @ViewChild("fileDropRef", { static: false }) fileUpload: ElementRef;
   files: any[] = [];
   fileName = "";
@@ -16,16 +18,9 @@ export class ContractListComponent {
   shwoButtonLoad = false;
   showSearchView = false;
   constructor(private toastr: ToastrService,
-    private appService: AppService) { }
+    private appService : AppService){}
 
-  addContract(label) {
-    if (label == "new") {
-      this.showButton = true;
-    } else {
-      this.showButton = false;
-      this.files = []
-      this.shwoButtonLoad = false;
-    }
+  ngOnInit(): void {
   }
 
   onFileSelected() {
@@ -38,10 +33,17 @@ export class ContractListComponent {
       console.log('>>>>>>>>>>>', this.files);
       const fileName = this.files[0].name
       const file = this.files[0]
+      this.appService.uploadFileS3(file).subscribe((data: {}) => {
+        this.toastr.success('Fichier sauvegardé avec succès')
+      },
+        (error: HttpErrorResponse) => {
+          this.toastr.error("Une erreur est survenue lors de l'enregistrement du fichier dans la base donnée. \n Veuillez réessayer plutard.")
+        },
+      )
     }
   }
 
-  searchView() {
+  searchView(){
     this.showSearchView = !this.showSearchView
   }
 
@@ -68,7 +70,7 @@ export class ContractListComponent {
       console.log("Upload in progress.");
       return;
     }
-    if (this.files.length) this.shwoButtonLoad = false;
+    if(this.files.length) this.shwoButtonLoad = false;
     this.files.splice(index, 1);
   }
 
@@ -121,4 +123,5 @@ export class ContractListComponent {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
   }
+
 }
