@@ -30,7 +30,6 @@ export class UploadComponent implements OnInit {
       return;
     }
     if (this.files[0]) {
-      console.log('>>>>>>>>>>>', this.files);
       const fileName = this.files[0].name
       const file = this.files[0]
       this.appService.uploadFileS3(file).subscribe((data: {}) => {

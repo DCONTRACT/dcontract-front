@@ -9,6 +9,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { ToastrModule } from 'ngx-toastr';
 import { ImageViewerConfig, ImageViewerModule, IMAGEVIEWER_CONFIG } from '@hallysonh/ngx-imageviewer';
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
+import { ClipboardModule } from 'ngx-clipboard';
 
 const MY_IMAGEVIEWER_CONFIG: ImageViewerConfig = {
   buttonStyle: {
@@ -25,6 +26,7 @@ const MY_IMAGEVIEWER_CONFIG: ImageViewerConfig = {
     CommonModule,
     ToastrModule.forRoot(),
     ImageViewerModule,
+    ClipboardModule,
     PdfJsViewerModule,
     SharedModule,
     ComponentsModule,

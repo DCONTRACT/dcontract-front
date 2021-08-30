@@ -5,6 +5,19 @@ import { } from "process";
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
+class Job {
+  job: string;
+  status: string;
+}
+
+class Invoice {
+  INVOICENUMBER: string;
+  INVOICEDATE: string;
+  TOTALHT: string;
+  TVA: string;
+  TOTALTTC: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,16 +28,40 @@ export class AppService {
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
       'Accept': 'application/json'
     }),
   }
 
   // HttpClient API get() method => Fetch employees list
   uploadFileS3(file): Observable<boolean> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
     return this.http.post<boolean>(
-      this.apiURL,
-      JSON.stringify({ 'url': file }),
+      'http://localhost:5000/invoice/upload',
+      formData,
+      this.httpOptions
+    )
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
+  getStatus(fileName): Observable<Job> {
+    return this.http.get<Job>(
+      'http://localhost:5000/invoice/uploadStatus?filename='+fileName,
+      this.httpOptions
+    )
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
+  getInvoice(fileName): Observable<Invoice> {
+    return this.http.get<Invoice>(
+      'http://localhost:5000/invoice/extract?filename='+fileName,
       this.httpOptions
     )
       .pipe(

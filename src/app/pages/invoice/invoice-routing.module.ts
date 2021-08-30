@@ -5,11 +5,11 @@ import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   {
-    path: "show",
+    path: "",
     component: UploadComponent,
   },
   {
-    path: "",
+    path: "show",
     component: ShowComponent,
   },
 ];
